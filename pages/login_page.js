@@ -10,7 +10,7 @@ var LoginPage = (function () {
     }
 
     LoginPage.prototype.visitPage = function () {
-        browser.get("https://demo.monimus.me");
+        browser.get(browser.baseUrl);
     };
 
     LoginPage.prototype.typeEmail = function (email) {
