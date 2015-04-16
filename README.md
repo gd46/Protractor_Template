@@ -21,6 +21,26 @@ exports.config = {
 };
 ```
 
+# How to use suite instead of specs
+```javascript
+exports.config = {
+  seleniumAddress: 'http://localhost:4444/wd/hub',
+
+  capabilities: {
+    'browserName': 'chrome'
+  },
+
+  suites: {
+    login: './e2e/login.spec.js'
+  },
+
+  jasmineNodeOpts: {
+    showColors: true
+  }
+};
+```
+Use this command: `protractor conf.js --suite login` to run a specific suite. Where conf.js is the 
+path to your conf file, followed by `--suite` followed by the name of the suite you want to run. 
 # Running your tests
 
 1. Start webdriver server
