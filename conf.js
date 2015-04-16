@@ -15,6 +15,7 @@ exports.config = {
      browser.driver.manage().window().maximize();
      // Can use setSize(1600, 800) instead to test app responsiveness in the future
   },
+ // allScriptsTimeout: 20000, Can set a timeout after all scripts
   baseUrl: 'https://demo.monimus.me',
   jasmineNodeOpts: {
     onComplete: null,
