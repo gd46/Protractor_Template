@@ -11,6 +11,9 @@ exports.config = {
   capabilities: {
     'browserName': 'chrome'
   },
+  onPrepare: function() {
+     browser.driver.manage().window().maximize();
+  },
   baseUrl: 'https://demo.monimus.me',
   jasmineNodeOpts: {
     onComplete: null,
