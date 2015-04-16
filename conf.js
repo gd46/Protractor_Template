@@ -13,6 +13,7 @@ exports.config = {
   },
   onPrepare: function() {
      browser.driver.manage().window().maximize();
+     // Can use setSize(1600, 800) instead to test app responsiveness in the future
   },
   baseUrl: 'https://demo.monimus.me',
   jasmineNodeOpts: {
