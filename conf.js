@@ -1,3 +1,6 @@
+var LoginPage = require("../../spec/pages/loginPage.js");
+var env = new LoginPage();
+
 exports.config = {
   seleniumAddress: "http://127.0.0.1:4444/wd/hub",
   seleniumPort: null,
@@ -21,6 +24,11 @@ exports.config = {
   onPrepare: function() {
      browser.driver.manage().window().maximize();
      // Can use setSize(1600, 800) instead to test app responsiveness in the future
+     browser.ignoreSynchronization = false;
+     env.gotoLoginPage();
+  },
+  onComplete: function() {
+
   },
  // allScriptsTimeout: 20000, Can set a timeout after all scripts
   jasmineNodeOpts: {

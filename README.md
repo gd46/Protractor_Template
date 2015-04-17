@@ -52,6 +52,7 @@ path to your conf file, followed by `--suite` followed by the name of the suite 
 
 1. You don’t need to add waits or sleeps to your test. Protractor can communicate with your AngularJS app automatically and execute the next step in your test the moment the webpage finishes pending tasks, so you don’t have to worry about waiting for your test and webpage to sync. 
 2. Can shut of synchronization should you choose to by using : `browser.ignoreSynchronization = true;`
+3. Can delete all cookies by using : `browser.manage().deleteAllCookies();`
 
 # Resources
 1. [Protractor for Angularjs](http://ramonvictor.github.io/protractor/slides/#/)
