@@ -9,7 +9,7 @@ var LoginPage = (function () {
         this.loginButton = element(by.xpath('//*[@id="main-content-wrapper"]/div/div/div/div[1]/div/div/section/div[2]/form/button'));
     }
 
-    LoginPage.prototype.visitPage = function () {
+    LoginPage.prototype.gotoLoginPage = function () {
         browser.get(browser.baseUrl);
     };
 

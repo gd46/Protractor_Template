@@ -3,13 +3,19 @@ exports.config = {
   seleniumPort: null,
   seleniumArgs: [],
   suites: {
-    login: './e2e/login.spec.js'
+    login: './e2e/login.spec.js',
+    session: './e2e/session.spec.js'
   },
   // specs: [
   //   './e2e/**/*.spec.js'
   // ],
   capabilities: {
     'browserName': 'chrome'
+  },
+  chromeDriver: '../selenium/chromedriver',
+  chromeOnly: true,
+  'loggingPrefs': {
+        'browser': 'ALL' // Selenium logging preferences
   },
   onPrepare: function() {
      browser.driver.manage().window().maximize();
