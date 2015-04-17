@@ -1,4 +1,4 @@
-var LoginPage = require("../spec/pages/loginPage.js");
+var LoginPage = require("../../spec/pages/loginPage.js");
 
 describe("Self Service", function() {
   var page = new LoginPage();

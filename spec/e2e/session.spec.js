@@ -1,4 +1,4 @@
-var Navigation = require('../util/navigation.js');
+var Navigation = require('../../spec/util/navigation.js');
 
 describe("Create Session", function(){
 	var nav = new Navigation();
