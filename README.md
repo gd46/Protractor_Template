@@ -52,6 +52,7 @@ path to your conf file, followed by `--suite` followed by the name of the suite 
 
 1. You don’t need to add waits or sleeps to your test. Protractor can communicate with your AngularJS app automatically and execute the next step in your test the moment the webpage finishes pending tasks, so you don’t have to worry about waiting for your test and webpage to sync. 
 2. Can shut of synchronization should you choose to by using : `browser.ignoreSynchronization = true;`
+3. Can delete all cookies by using : `browser.manage().deleteAllCookies();`
 
 # Resources
 1. [Protractor for Angularjs](http://ramonvictor.github.io/protractor/slides/#/)
@@ -63,6 +64,6 @@ path to your conf file, followed by `--suite` followed by the name of the suite 
 7. [Protractor Setup/Page Object Example] (https://teamgaslight.com/blog/getting-started-with-protractor-and-page-objects-for-angularjs-e2e-testing)
 8. [Protractor Page Object Example] (http://spin.atomicobject.com/2014/08/08/page-objects-angular-protractor-specs/)
 9. [Protractor Angular Setup/Selectors/Etc] (http://angular.github.io/protractor/#/)
-10. [Google testing blow] (http://googletesting.blogspot.com/2014/11/protractor-angular-testing-made-easy.html)
+10. [Google testing blog] (http://googletesting.blogspot.com/2014/11/protractor-angular-testing-made-easy.html)
 11. [Set up afterEach function to log and screenShot errors after each test] (http://eitanp461.blogspot.com/2014/01/advanced-protractor-features.html)
-12. [Asynchronous Testing with Protractor’s ControlFlow] ("http://spin.atomicobject.com/2014/12/17/asynchronous-testing-protractor-angular/")
+12. [Asynchronous Testing with Protractor’s ControlFlow] (http://spin.atomicobject.com/2014/12/17/asynchronous-testing-protractor-angular/)
