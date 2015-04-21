@@ -3,7 +3,7 @@ exports.config = {
   seleniumPort: null,
   seleniumArgs: [],
   suites: {
-    login: './spec/e2e/login.spec.js',
+    //login: './spec/e2e/login.spec.js',
     session: './spec/e2e/session.spec.js'
   },
   // specs: [

@@ -12,8 +12,8 @@ describe("Session", function(){
 	});
 	afterEach(function(){
 		var reports = new Reporter();
-		reports.takeScreenShot();
-		//reports.writeLogs();
+		//reports.takeScreenShot();
+		reports.writeLogs();
 	})
 	// describe("Create", function(){
 	// 	it("Default", function(){
