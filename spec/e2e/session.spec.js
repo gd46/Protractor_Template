@@ -24,34 +24,22 @@ describe("Session", function(){
 	// });
 	describe("Click", function(){
 		it("Session title", function(){
+			var count = 0;
 			browser.sleep(2000);
 			nav.gotoSessionPage();
-			// element.all(by.repeater('session in sessions')).then(function(sessions) {
-			// 	console.log(sessions.row(1).getText());
-			//    // for(i=0;i<sessions.length;i++){
-			//    // 		var tmp = element(by.repeater('session in sessions').row(i)).getText();
-			//    // 		//.element(by.xpath('//*[@class="course-items"]/div/ul/li[' + i + ']/div/div[1]/div/h2/a')).getText();
-			//    // 		console.log(tmp);
-			//    // }
-			// });
+			
+			// Both are able to get to the first session title in the list and click it
+			// var test = element.all(by.repeater('session in sessions')).get(0).all(by.xpath("//*[@class='session-name']/h2/a")).get(0);
+			var test = element.all(by.xpath("//*[@class='session-name']/h2/a"));
+			test.then(function(elements){
+				count = elements.length;
+			})
+			var num = Math.floor((Math.random() * count) + 1);
+			console.log(num);
+			test.get(num).click();
+			browser.sleep(5000);
 
-			// var test = element.all(by.repeater('session in sessions')).all(by.css(".session-name")).then(function(title){
-			// 	title[1].click();
-			// })
-			// var test = element.all(by.repeater('session in sessions')).then(function(title){
-			// 	console.log(title[1].getText());
-			// 	//title[1].click();
-			// })
-			// var test = element.all(by.css('.session-name')).get(0);
-			//   test.getText().then(function (txt) {
-			//   console.log(txt);
-			// });
-
-			  
-			// var test = element.all(by.repeater('session in sessions')).get(0);
-			// test.getText().then(function (txt) {
-			//   console.log(txt);
-			// });
+			
 		expect(browser.getCurrentUrl()).toBe(browser.baseUrl + '/#/sessions/user');
 		});
 	});
