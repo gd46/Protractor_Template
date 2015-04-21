@@ -21,10 +21,17 @@ var Reporter = (function () {
         });
     };
     Reporter.prototype.writeLogs = function () {
-        browser.manage().logs().get('browser').then(function(browserLogs){
-            var stream = fs.createFileStream('../logs/' + this.specName + '.log', browserLogs);
-            stream.write(new Buffer(log, 'base64'));
-            stream.end();
+        var self = this;
+        browser.manage().logs().get('browser').then(function(browserLogs) {
+           // browserLogs is an array of objects with level and message fields
+           var file = path.join('./spec/logs', self.specName + '.log');
+           var stream = fs.createWriteStream(file);
+           browserLogs.forEach(function(log){
+              if (log.level.value > 900) { // it's an error log
+                stream.write("SEVERE ERROR: " + log.message + "\n");
+              };
+           });
+           stream.end();
         });
     };
     
