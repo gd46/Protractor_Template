@@ -16,7 +16,11 @@ var Reporter = (function () {
         browser.takeScreenshot().then(function(png){
             var decodedImage = new Buffer(png, 'base64');
             if(!fs.exists('./spec/screenshots/failed_tests')){
-              fs.mkdir('./spec/screenshots/failed_tests');
+              fs.mkdir('./spec/screenshots/failed_tests', function(error){
+                if(error){
+                  console.log(error);
+                }
+              });
             }
             var file = path.join('./spec/screenshots/failed_tests/', self.specName + '.png');
             var stream = fs.createWriteStream(file);
@@ -29,7 +33,11 @@ var Reporter = (function () {
         browser.manage().logs().get('browser').then(function(browserLogs) {
            // browserLogs is an array of objects with level and message fields
            if(!fs.exists('./spec/logs')){
-              fs.mkdir('./spec/logs');
+              fs.mkdir('./spec/logs', function(error){
+                if(error){
+                  console.log(error);
+                }
+              });
            }
            
            var file = path.join('./spec/logs', self.specName + '.log');

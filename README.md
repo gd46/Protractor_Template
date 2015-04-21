@@ -1,3 +1,9 @@
+# What this framework includes
+1. Set up file structure
+2. Takes screenshots if tests fail
+3. Grabs console errors and write them to log file
+4. Set up page objects
+
 # Getting Started
 
 1. sudo npm install protractor -g
@@ -46,7 +52,7 @@ path to your conf file, followed by `--suite` followed by the name of the suite 
 1. Start webdriver server
 2. webdriver-manager start
 3. Open new terminal window
-4. Run protractor by typing path to conf file
+4. Run protractor by typing `protractor` path to conf file
 
 # Important Notes
 
@@ -54,6 +60,9 @@ path to your conf file, followed by `--suite` followed by the name of the suite 
 2. Can shut of synchronization should you choose to by using : `browser.ignoreSynchronization = true;`
 3. Can delete all cookies by using : `browser.manage().deleteAllCookies();`
 4. Running protractor conf.js will runs all tests in the order that you set up in the conf.js file
+5. Protractor knows when the app is done with http requests, timeout, and interval
+6. Http or timeout will cause protractor to never know if your tests are done and will cause timeout. Instead use interval and Protractor will ignore and not get hung up.
+7. Running selectors live: cd node_modules/protractor ./bin/elementexplorer.js URL click tab for suggestions
 
 # Resources
 1. [Protractor for Angularjs](http://ramonvictor.github.io/protractor/slides/#/)
@@ -70,3 +79,4 @@ path to your conf file, followed by `--suite` followed by the name of the suite 
 12. [Asynchronous Testing with Protractor’s ControlFlow] (http://spin.atomicobject.com/2014/12/17/asynchronous-testing-protractor-angular/)
 13. [ng-conf 2014] (http://ng-conf.ng-learn.org/)
 14. [future ng-conf dates etc] (http://www.ng-conf.org/)
+15. [Angular protracter e2e cheatsheet] (http://webslainte.blogspot.com/2014/01/angular-js-protractor-e2e-cheatsheet.html)
