@@ -1,2 +1,4 @@
 node_modules
 .DS_Store
+spec/logs/*
+screenshots/failed_tests/*
