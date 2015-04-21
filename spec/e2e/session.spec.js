@@ -5,10 +5,10 @@ describe("Session", function(){
 	var nav = new Navigation();
 	beforeEach(function(){
 			browser.ignoreSynchronization = true;
-			browser.get(browser.baseUrl);
-	     	browser.findElement(by.model('email')).sendKeys("theresa.jacobs47@monimus.com");
-	     	browser.findElement(by.model('password')).sendKeys("password");
-	     	browser.findElement(by.xpath('//*[@id="main-content-wrapper"]/div/div/div/div[1]/div/div/section/div[2]/form/button')).click();
+			// browser.get(browser.baseUrl);
+	  //    	browser.findElement(by.model('email')).sendKeys("theresa.jacobs47@monimus.com");
+	  //    	browser.findElement(by.model('password')).sendKeys("password");
+	  //    	browser.findElement(by.xpath('//*[@id="main-content-wrapper"]/div/div/div/div[1]/div/div/section/div[2]/form/button')).click();
 	});
 	afterEach(function(){
 		var reports = new Reporter();
@@ -52,7 +52,7 @@ describe("Session", function(){
 			// test.getText().then(function (txt) {
 			//   console.log(txt);
 			// });
-		expect(browser.getCurrentUrl()).toBe(browser.baseUrl + '/#/');
+		expect(browser.getCurrentUrl()).toBe(browser.baseUrl + '/#/sessions/user');
 		});
 	});
 });
