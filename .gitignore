@@ -4,4 +4,4 @@ spec/logs/*
 screenshots/failed_tests/*
 monimus_qa_protractor.sublime-project
 monimus_qa_protractor.sublime-workspace
-
+/spec/util/data/users.json
