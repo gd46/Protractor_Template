@@ -35,12 +35,12 @@ describe("Session", function(){
 				count = elements.length;
 			})
 			var num = Math.floor((Math.random() * count) + 1);
-			console.log(num);
+			browser.sleep(2000);
 			test.get(num).click();
 			browser.sleep(5000);
 
 			
-		expect(browser.getCurrentUrl()).toBe(browser.baseUrl + '/#/sessions/user');
+		expect(browser.getCurrentUrl()).toContain(browser.baseUrl + '/#/sessions');
 		});
 	});
 });

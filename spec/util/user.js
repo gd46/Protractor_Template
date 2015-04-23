@@ -3,19 +3,19 @@
  */
 var userEmails = require('./data/userEmails.json');
 
-var Users = (function(){
+var User = (function(){
   'use strict';
 
-  function Users (){}
+  function User (){}
 
   //Returns user
-  Users.prototype.getRandomUserEmail = function(){
+  User.prototype.getRandomUserByEmail = function(){
     var num = (Math.random() * (userEmails.emails.length - 0) + 0) - 1;
     var num = Math.round(num);
     return userEmails.emails[num];
   }
 
-  return Users;
+  return User;
 })();
 
-module.exports = Users;
+module.exports = User;
