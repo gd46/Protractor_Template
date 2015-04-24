@@ -23,7 +23,7 @@ exports.config = {
      browser.driver.manage().window().maximize();
      // Can use setSize(1600, 800) instead to test app responsiveness in the future
   },
-  frameworks: ['mocha', 'chai']
+  frameworks: ['mocha']
   // onComplete: function() {
 
   // },

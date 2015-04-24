@@ -3,6 +3,8 @@ var User = require("../../spec/util/user.js");
 var chai = require('chai');
 var expect = chai.expect;
 var assert = chai.assert;
+var chaiAsPromised = require('chai-as-promised');
+chai.use(chaiAsPromised);
 
 describe("Self Service", function() {
   var page = new LoginPage();
@@ -19,13 +21,9 @@ describe("Self Service", function() {
       browser.sleep(2000);
       page.login();
       browser.sleep(5000);
-      //assert(3,'3', 'equal');
-      console.log('capturedUrl: '+browser.getCurrentUrl());
-      console.log('setUrl: '+browser.baseUrl + '/#/');
+      expect(browser.getTitle()).to.eventually.equal("showd.me: Learning Paths");
+      //expect(browser.getCurrentUrl()).to.eventually.equal(browser.baseUrl + '/#/');
 
-      expect(browser.getCurrentUrl()).to.equal(browser.baseUrl + '/#/');
-      //expect(browser.getTitle()).to.equal("test");
-    //expect(browser.getCurrentUrl()).to.equal(browser.baseUrl + '/#/');
     });
   });
 });
