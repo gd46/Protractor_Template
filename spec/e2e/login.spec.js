@@ -10,8 +10,9 @@ describe("Self Service", function() {
       browser.sleep(2000);
       page.gotoLoginPage();
       browser.sleep(2000);
-      var email = user.getRandomUserByEmail();
-      page.typeEmail(email);
+      //var email = user.getRandomUserByEmail();
+      //page.typeEmail(email);
+      page.typeEmail("theresa.jacobs47@monimus.com");
       page.typePassword("password");
       browser.sleep(2000);
       page.login();
