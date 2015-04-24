@@ -36,7 +36,7 @@ describe("Session", function(){
 			})
 			var num = Math.floor((Math.random() * count) + 1);
 			browser.sleep(2000);
-			test.get(num).click();
+			test.get(0).click();
 			browser.sleep(5000);
 
 			
