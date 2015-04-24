@@ -23,14 +23,9 @@ exports.config = {
      browser.driver.manage().window().maximize();
      // Can use setSize(1600, 800) instead to test app responsiveness in the future
   },
+  frameworks: ['mocha', 'chai']
   // onComplete: function() {
 
   // },
  // allScriptsTimeout: 20000, Can set a timeout after all scripts
-  jasmineNodeOpts: {
-    onComplete: null,
-    isVerbose: false,
-    showColors: true,
-    includeStackTrace: false
-  }
 };

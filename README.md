@@ -80,3 +80,4 @@ path to your conf file, followed by `--suite` followed by the name of the suite 
 13. [ng-conf 2014] (http://ng-conf.ng-learn.org/)
 14. [future ng-conf dates etc] (http://www.ng-conf.org/)
 15. [Angular protracter e2e cheatsheet] (http://webslainte.blogspot.com/2014/01/angular-js-protractor-e2e-cheatsheet.html)
+16. [Protractor using mocha and chai] (http://litutech.blogspot.com/2014/02/an-example-of-use-of-protractor-with.html)
