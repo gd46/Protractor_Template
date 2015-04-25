@@ -21,9 +21,8 @@ describe("Self Service", function() {
       browser.sleep(2000);
       page.login();
       browser.sleep(5000);
-      expect(browser.getTitle()).to.eventually.equal("showd.me: Learning Paths");
-      //expect(browser.getCurrentUrl()).to.eventually.equal(browser.baseUrl + '/#/');
-
+      assert.eventually.equal(browser.getTitle(), 'showd.me: Learning Paths');
+      assert.eventually.equal(browser.getCurrentUrl(), browser.baseUrl + '/#/')
     });
   });
 });
