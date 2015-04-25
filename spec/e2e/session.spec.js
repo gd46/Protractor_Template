@@ -59,7 +59,8 @@ describe("Session", function(){
 			// browser.executeScript(scrollIntoView, element);
 			test.get(0).click();
 			browser.sleep(5000);
-		assert.eventually.match(browser.getCurrentUrl(), /sessions\/[a-zA-Z0-9]{24}\/chat/);
+		assert.eventually.match(browser.getCurrentUrl(), /sessions\/[a-zA-Z0-9]{24}\/chat/, "url should match regex pattern");
+		//expect(browser.getCurrentUrl(), "url should match regex pattern").to.eventually.match(/sessions\/[a-zA-Z0-9]{24}\/chat/);
 		});
 	});
 });
