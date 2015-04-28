@@ -5,7 +5,16 @@
 3. Run `sudo webdriver-manager update`, this will install and update webdriver 
 4. Open terminal
 5. In one terminal window run `webdriver-manager start` to start a selenium standalone server
-6. In another terminal window you can now run protractor conf.js to run tests
+6. In another terminal window you can now run `protractor conf.js` to run tests
+
+# File structure explanation
+
+1. Before you begin create a new branch with the name of your section
+2. spec if the root directory for the whole testing framework
+3. `e2e`, this is where all integration tests go. These tests should only have calls to your page object methods. Their should be no protractor code here.
+4. `pages`, this is where your page objects go. Each section of the site, ie: sessions, learningpaths, mycontent, etc should have a page object. This is where you put the protractor selectors, and perform protractor methods. 
+5. `util`, this is where we have build some common functions for navigation, reporting, getting user data. This section will be constantly built on. If you have a function that you believe everyone can benefit from and you think it belongs here notify Giuseppe and he will add it here and merge it to master. 
+6. You should not have to worry about adding new things to .gitignore it should be covered. Should you find that something should be added here also notify Giuseppe.
 
 # Setup a config file
 ```javascript
@@ -44,12 +53,6 @@ exports.config = {
 3. The name on the left is a name you choose, ie: the name of your section
 4. The path on the right is the path to your spec file, the spec file is your suite
 
-# Running your tests
-
-1. Start webdriver server
-2. webdriver-manager start
-3. Open new terminal window
-4. Run protractor by typing `protractor conf.js` 
 
 # Important Notes
 
