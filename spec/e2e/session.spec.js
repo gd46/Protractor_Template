@@ -6,61 +6,40 @@ var assert = chai.assert;
 var chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
 
-// describe("Session", function(){
-// 	browser.ignoreSynchronization = true;
-// 	describe("Click session title", function(){
-// 		it("should click a session title", function(){
-// 			var nav = new Navigation();
-// 			nav.gotoSessionPage();
-// 			browser.sleep(2000);
-// 			//expect(browser.getCurrentUrl()).to.contain(browser.baseUrl + '/#/sessions');
-// 		})
-// 	})
-// })
-describe("Session", function(){
+
+/* 
+ * Define test suite with a descibe 
+ * The string should read the name of your section
+*/
+describe("Session", function(){ 
 	var nav = new Navigation();
-	beforeEach(function(){
-			browser.ignoreSynchronization = true;
-			// browser.get(browser.baseUrl);
-	  //    	browser.findElement(by.model('email')).sendKeys("theresa.jacobs47@monimus.com");
-	  //    	browser.findElement(by.model('password')).sendKeys("password");
-	  //    	browser.findElement(by.xpath('//*[@id="main-content-wrapper"]/div/div/div/div[1]/div/div/section/div[2]/form/button')).click();
-	});
-	afterEach(function(){
-		// var reports = new Reporter();
-		// reports.takeScreenShot();
-		//reports.writeLogs();
-	})
-	// describe("Create", function(){
-	// 	it("Default", function(){
-	// 		browser.sleep(2000);
-	// 		nav.gotoSessionPage();
-	// 		expect(browser.getCurrentUrl()).toBe(browser.baseUrl + '/#/sessions/user');
-	// 	});
-	// });
-	describe("Click", function(){
-		it("Session title", function(){
-			var count = 0;
-			//browser.sleep(2000);
-			nav.gotoSessionPage();
+	browser.ignoreSynchronization = true;
+	
+	/*
+	 * 'describe' is used for naming the action
+	 * 'context' is used for defining the scenario 
+	 * 'context' statements begin with keywords like given
+	 * 'it' is the name of your test
+	 * 'it' statements begin with keywords like should, will
+	*/
+	describe("Click session title", function(){
+		context("Given that the session is yours", function(){
+			it("should click a session title", function(){
 			
-			// Both are able to get to the first session title in the list and click it
-			// var test = element.all(by.repeater('session in sessions')).get(0).all(by.xpath("//*[@class='session-name']/h2/a")).get(0);
+			var count = 0;
+			nav.gotoSessionPage();
+
 			var test = element.all(by.xpath("//*[@class='session-name']/h2/a"));
 			test.then(function(elements){
 				count = elements.length;
 			})
 			var num = Math.floor((Math.random() * count) + 1);
 			browser.sleep(2000);
-			// var scrollIntoView = function(element){
-			// 	arguements[0].scrollIntoView();
-			// };
-			// var element = test.get(num);
-			// browser.executeScript(scrollIntoView, element);
 			test.get(0).click();
 			browser.sleep(5000);
-		assert.eventually.match(browser.getCurrentUrl(), /session\/[a-zA-Z0-9]{24}\/chat/, "url should match regex pattern");
-		//expect(browser.getCurrentUrl(), "url should match regex pattern").to.eventually.match(/sessions\/[a-zA-Z0-9]{24}\/chat/);
+			assert.eventually.match(browser.getCurrentUrl(), /sessions\/[a-zA-Z0-9]{24}\/chat/, "url should match regex pattern");
+			//expect(browser.getCurrentUrl(), "url should match regex pattern").to.eventually.match(/sessions\/[a-zA-Z0-9]{24}\/chat/);
+			});
 		});
 	});
 });
