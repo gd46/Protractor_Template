@@ -1,6 +1,22 @@
 var Navigation = require('../../spec/util/navigation.js');
 var Reporter = require('../../spec/util/reporter.js');
+var chai = require('chai');
+var expect = chai.expect;
+var assert = chai.assert;
+var chaiAsPromised = require('chai-as-promised');
+chai.use(chaiAsPromised);
 
+// describe("Session", function(){
+// 	browser.ignoreSynchronization = true;
+// 	describe("Click session title", function(){
+// 		it("should click a session title", function(){
+// 			var nav = new Navigation();
+// 			nav.gotoSessionPage();
+// 			browser.sleep(2000);
+// 			//expect(browser.getCurrentUrl()).to.contain(browser.baseUrl + '/#/sessions');
+// 		})
+// 	})
+// })
 describe("Session", function(){
 	var nav = new Navigation();
 	beforeEach(function(){
@@ -11,9 +27,9 @@ describe("Session", function(){
 	  //    	browser.findElement(by.xpath('//*[@id="main-content-wrapper"]/div/div/div/div[1]/div/div/section/div[2]/form/button')).click();
 	});
 	afterEach(function(){
-		var reports = new Reporter();
-		//reports.takeScreenShot();
-		reports.writeLogs();
+		// var reports = new Reporter();
+		// reports.takeScreenShot();
+		//reports.writeLogs();
 	})
 	// describe("Create", function(){
 	// 	it("Default", function(){
@@ -25,7 +41,7 @@ describe("Session", function(){
 	describe("Click", function(){
 		it("Session title", function(){
 			var count = 0;
-			browser.sleep(2000);
+			//browser.sleep(2000);
 			nav.gotoSessionPage();
 			
 			// Both are able to get to the first session title in the list and click it
@@ -36,11 +52,15 @@ describe("Session", function(){
 			})
 			var num = Math.floor((Math.random() * count) + 1);
 			browser.sleep(2000);
+			// var scrollIntoView = function(element){
+			// 	arguements[0].scrollIntoView();
+			// };
+			// var element = test.get(num);
+			// browser.executeScript(scrollIntoView, element);
 			test.get(0).click();
 			browser.sleep(5000);
-
-			
-		expect(browser.getCurrentUrl()).toContain(browser.baseUrl + '/#/sessions');
+		assert.eventually.match(browser.getCurrentUrl(), /session\/[a-zA-Z0-9]{24}\/chat/, "url should match regex pattern");
+		//expect(browser.getCurrentUrl(), "url should match regex pattern").to.eventually.match(/sessions\/[a-zA-Z0-9]{24}\/chat/);
 		});
 	});
 });
