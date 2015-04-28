@@ -29,6 +29,10 @@ describe("Session", function() {
                 nav.gotoSessionPage();
                 browser.sleep(2000);
                 sessionPage.createNewSession();
+                browser.sleep(2000);
+                sessionPage.typeSessionName("test");
+                browser.sleep(2000);
+                sessionPage.typeSessionSkill("html");
                 browser.sleep(5000);
                 assert.eventually.match(browser.getCurrentUrl(), /sessions\/create/, "should be on create session page");
             });
