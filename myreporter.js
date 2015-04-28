@@ -72,7 +72,7 @@ function MyReporter(runner) {
     runner.on('fail', function(test, err) {
         cursor.CR();
         console.log(indent() + color('fail', '  %d) %s'), ++n, test.title);
-        reports.takeScreenShot();
+        reports.takeScreenShot(test.title);
     });
 
     // Once tests finish 
