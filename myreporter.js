@@ -2,9 +2,9 @@
  * Module dependencies.
  */
 
-var Base = require('./node_modules/mocha/lib/reporters/base')
-  , cursor = Base.cursor
-  , color = Base.color;
+var Base = require('./node_modules/mocha/lib/reporters/base'),
+    cursor = Base.cursor,
+    color = Base.color;
 
 var fs = require('fs');
 var path = require('path');
@@ -25,68 +25,61 @@ exports = module.exports = MyReporter;
  */
 
 function MyReporter(runner) {
-  Base.call(this, runner);
+    Base.call(this, runner);
 
-  var self = this
-    , stats = this.stats
-    , indents = 0
-    , n = 0;
+    var self = this,
+        stats = this.stats,
+        indents = 0,
+        n = 0;
 
-  function indent() {
-    return Array(indents).join('  ')
-  }
-
-  runner.on('start', function(){
-    console.log();
-  });
-
-  runner.on('suite', function(suite){
-    ++indents;
-    console.log(color('suite', '%s%s'), indent(), suite.title);
-  });
-
-  runner.on('suite end', function(suite){
-    --indents;
-    if (1 == indents) console.log();
-  });
-
-  runner.on('pending', function(test){
-    var fmt = indent() + color('pending', '  - %s');
-    console.log(fmt, test.title);
-  });
-
-  // For every test pass
-  runner.on('pass', function(test){
-    if ('fast' == test.speed) {
-      var fmt = indent()
-        + color('checkmark', '  ' + Base.symbols.ok)
-        + color('pass', ' %s');
-      cursor.CR();
-      console.log(fmt, test.title);
-    } else {
-      var fmt = indent()
-        + color('checkmark', '  ' + Base.symbols.ok)
-        + color('pass', ' %s')
-        + color(test.speed, ' (%dms)');
-      cursor.CR();
-      console.log(fmt, test.title, test.duration);
+    function indent() {
+        return Array(indents).join('  ')
     }
-  });
 
-  // For every test fail
-  runner.on('fail', function(test, err){
-    cursor.CR();
-    console.log(indent() + color('fail', '  %d) %s'), ++n, test.title);
-    var test = reports.takeScreenShot();
-    console.log(test);
-    return reports.takeScreenShot();
-  });
+    runner.on('start', function() {
+        console.log();
+    });
 
-  // Once tests finish 
-  runner.on('end', function(test){
-    self.epilogue.bind(self);
-    return reports.writeLogs();
-  });
+    runner.on('suite', function(suite) {
+        ++indents;
+        console.log(color('suite', '%s%s'), indent(), suite.title);
+    });
+
+    runner.on('suite end', function(suite) {
+        --indents;
+        if (1 == indents) console.log();
+    });
+
+    runner.on('pending', function(test) {
+        var fmt = indent() + color('pending', '  - %s');
+        console.log(fmt, test.title);
+    });
+
+    // For every test pass
+    runner.on('pass', function(test) {
+        if ('fast' == test.speed) {
+            var fmt = indent() + color('checkmark', '  ' + Base.symbols.ok) + color('pass', ' %s');
+            cursor.CR();
+            console.log(fmt, test.title);
+        } else {
+            var fmt = indent() + color('checkmark', '  ' + Base.symbols.ok) + color('pass', ' %s') + color(test.speed, ' (%dms)');
+            cursor.CR();
+            console.log(fmt, test.title, test.duration);
+        }
+    });
+
+    // For every test fail
+    runner.on('fail', function(test, err) {
+        cursor.CR();
+        console.log(indent() + color('fail', '  %d) %s'), ++n, test.title);
+        reports.takeScreenShot(test.title);
+    });
+
+    // Once tests finish 
+    runner.on('end', function(test) {
+        self.epilogue.bind(self);
+        reports.writeLogs();
+    });
 }
 
 /**

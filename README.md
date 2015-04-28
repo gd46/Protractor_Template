@@ -1,68 +1,64 @@
-# What this framework includes
-1. Set up file structure
-2. Takes screenshots if tests fail
-3. Grabs console errors and write them to log file
-4. Set up page objects
-
 # Getting Started
 
-1. sudo npm install protractor -g
-2. npm install protractor --save
-3. sudo webdriver-manager update
+1. Clone [repo] (https://github.com/mykabam/showdme-protractor.git)
+2. Run `npm install` 
+3. Run `sudo webdriver-manager update`, this will install and update webdriver 
+4. Open terminal
+5. In one terminal window run `webdriver-manager start` to start a selenium standalone server
+6. In another terminal window you can now run `protractor conf.js` to run tests
+
+# File structure explanation
+
+1. Before you begin create a new branch with the name of your section
+2. spec if the root directory for the whole testing framework
+3. `e2e`, this is where all integration tests go. These tests should only have calls to your page object methods. Their should be no protractor code here.
+4. `pages`, this is where your page objects go. Each section of the site, ie: sessions, learningpaths, mycontent, etc should have a page object. This is where you put the protractor selectors, and perform protractor methods. 
+5. `util`, this is where we have build some common functions for navigation, reporting, getting user data. This section will be constantly built on. If you have a function that you believe everyone can benefit from and you think it belongs here notify Giuseppe and he will add it here and merge it to master. 
+6. You should not have to worry about adding new things to .gitignore it should be covered. Should you find that something should be added here also notify Giuseppe.
 
 # Setup a config file
 ```javascript
 exports.config = {
-  seleniumAddress: 'http://localhost:4444/wd/hub',
-
-  capabilities: {
-    'browserName': 'chrome'
-  },
-
-  specs: ['example-spec.js'],
-
-  jasmineNodeOpts: {
-    showColors: true
-  }
-};
-```
-
-# How to use suite instead of specs
-```javascript
-exports.config = {
-  seleniumAddress: 'http://localhost:4444/wd/hub',
-
-  capabilities: {
-    'browserName': 'chrome'
-  },
-
+  seleniumAddress: "http://127.0.0.1:4444/wd/hub",
+  seleniumPort: null,
+  seleniumArgs: [],
   suites: {
-    login: './e2e/login.spec.js'
+    login: './spec/e2e/login.spec.js',  // Handles loginning before every test
+    session: './spec/e2e/session.spec.js' // Add your test spec as follows
   },
-
-  jasmineNodeOpts: {
-    showColors: true
-  }
-};
+  chromeOnly: true,
+  chromeDriver: './node_modules/protractor/selenium/chromedriver',
+  capabilities: {
+    'browserName': 'chrome'
+  },
+  baseUrl: 'https://demo.monimus.me',
+  'loggingPrefs': {
+        'browser': 'ALL' // Selenium logging preferences
+  },
+  onPrepare: function() {
+     browser.driver.manage().window().maximize();
+     // Can use setSize(1600, 800) instead to test app responsiveness in the future
+  },
+  framework: 'mocha',
+  mochaOpts: {
+    ui: 'bdd',
+    reporter: 'myreporter.js',
+    timeo
 ```
-Use this command: `protractor conf.js --suite login` to run a specific suite. Where conf.js is the 
-path to your conf file, followed by `--suite` followed by the name of the suite you want to run. 
-# Running your tests
 
-1. Start webdriver server
-2. webdriver-manager start
-3. Open new terminal window
-4. Run protractor by typing `protractor` path to conf file
+# How to add my test to conf.js file
+
+1. Navigate to the conf.js file in the root directory
+2. Go to the suites section of the conf.js file
+3. The name on the left is a name you choose, ie: the name of your section
+4. The path on the right is the path to your spec file, the spec file is your suite
+
 
 # Important Notes
 
-1. You don’t need to add waits or sleeps to your test. Protractor can communicate with your AngularJS app automatically and execute the next step in your test the moment the webpage finishes pending tasks, so you don’t have to worry about waiting for your test and webpage to sync. 
-2. Can shut of synchronization should you choose to by using : `browser.ignoreSynchronization = true;`
-3. Can delete all cookies by using : `browser.manage().deleteAllCookies();`
-4. Running protractor conf.js will runs all tests in the order that you set up in the conf.js file
-5. Protractor knows when the app is done with http requests, timeout, and interval
-6. Http or timeout will cause protractor to never know if your tests are done and will cause timeout. Instead use interval and Protractor will ignore and not get hung up.
-7. Running selectors live: cd node_modules/protractor ./bin/elementexplorer.js URL click tab for suggestions
+1. Running protractor conf.js will runs all tests in the order that you set up in the conf.js file
+2. You should not change the order the test run, make sure login is always the first test in the order
+3. Running selectors live: cd node_modules/protractor ./bin/elementexplorer.js URL click tab for suggestions
 
 # Resources
 1. [Protractor for Angularjs](http://ramonvictor.github.io/protractor/slides/#/)
