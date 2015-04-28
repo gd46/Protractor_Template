@@ -26,11 +26,11 @@ describe("Session", function(){
 	  //    	browser.findElement(by.model('password')).sendKeys("password");
 	  //    	browser.findElement(by.xpath('//*[@id="main-content-wrapper"]/div/div/div/div[1]/div/div/section/div[2]/form/button')).click();
 	});
-	// afterEach(function(){
-	// 	//var reports = new Reporter();
-	// 	//reports.takeScreenShot();
-	// 	//reports.writeLogs();
-	// })
+	afterEach(function(){
+		// var reports = new Reporter();
+		// reports.takeScreenShot();
+		//reports.writeLogs();
+	})
 	// describe("Create", function(){
 	// 	it("Default", function(){
 	// 		browser.sleep(2000);
@@ -59,7 +59,7 @@ describe("Session", function(){
 			// browser.executeScript(scrollIntoView, element);
 			test.get(0).click();
 			browser.sleep(5000);
-		assert.eventually.match(browser.getCurrentUrl(), /sessions\/[a-zA-Z0-9]{24}\/chat/, "url should match regex pattern");
+		assert.eventually.match(browser.getCurrentUrl(), /session\/[a-zA-Z0-9]{24}\/chat/, "url should match regex pattern");
 		//expect(browser.getCurrentUrl(), "url should match regex pattern").to.eventually.match(/sessions\/[a-zA-Z0-9]{24}\/chat/);
 		});
 	});
