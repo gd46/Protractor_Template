@@ -28,7 +28,7 @@ exports.config = {
   framework: 'mocha',
   mochaOpts: {
     ui: 'bdd',
-    reporter: 'myreporter.js',
+    reporter: 'spec',
     timeout: 100000
   }
   // onComplete: function() {
