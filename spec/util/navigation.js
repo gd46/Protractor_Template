@@ -10,6 +10,13 @@ var Navigation = (function () {
     	this.sessionsLink.click();
     	browser.sleep(5000);
     };
+    Navigation.prototype.scrollIntoView = function () {
+        // var scrollIntoView = function(element){
+            //  arguements[0].scrollIntoView();
+            // };
+            // var element = test.get(num);
+            // browser.executeScript(scrollIntoView, element);
+    }
 
     return Navigation;
 

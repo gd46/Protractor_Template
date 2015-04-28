@@ -1,3 +1,5 @@
+process.env.PROSHOT_DIR = './spec/screenshots/failed_tests/';
+
 exports.config = {
   seleniumAddress: "http://127.0.0.1:4444/wd/hub",
   seleniumPort: null,
@@ -23,14 +25,14 @@ exports.config = {
      browser.driver.manage().window().maximize();
      // Can use setSize(1600, 800) instead to test app responsiveness in the future
   },
+  framework: 'mocha',
+  mochaOpts: {
+    ui: 'bdd',
+    reporter: 'myreporter.js',
+    timeout: 100000
+  }
   // onComplete: function() {
 
   // },
  // allScriptsTimeout: 20000, Can set a timeout after all scripts
-  jasmineNodeOpts: {
-    onComplete: null,
-    isVerbose: false,
-    showColors: true,
-    includeStackTrace: false
-  }
 };
