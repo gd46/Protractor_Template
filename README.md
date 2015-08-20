@@ -43,7 +43,7 @@ exports.config = {
   mochaOpts: {
     ui: 'bdd',
     reporter: 'myreporter.js',
-    timeo
+    timeout: 100000
 ```
 
 # How to add my test to conf.js file
